@@ -1,20 +1,14 @@
 import React from 'react';
-import './App.css';
+import Main from './components/Main';
 
-import Navbar from './components/Navbar';
-import CasesList from './components/CasesList';
-import Footer from './components/Footer';
-
-import CasesContextProvider from './contexts/CasesContext';
+import ThemeContextProvider from './contexts/ThemeContext';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <CasesContextProvider>
-        <CasesList />
-      </CasesContextProvider>
-      <Footer />
+      <ThemeContextProvider>
+        <Main />
+      </ThemeContextProvider>
     </div>
   );
 }
