@@ -1,68 +1,74 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Title & Description
 
-## Available Scripts
+NSW Covid Cases Checker is a helper web app meant to assist communities and residents in NSW to know whether or not there's a recent case of COVID in their area/areas where they have been. And if there are, they can in itself have an initiative to be tested for COVID and/or contact the health authorities.
 
-In the project directory, you can run:
+## Environments
 
-### `npm start`
+This is a React Web App which can be accessed on any browser by following this link: [TPD].
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Compatible/Tested environments:
+- Chrome Version 84.x
+- Firefox Version 72.x.
+- Safari Version 13.x
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## System Dependencies & Configuration
 
-### `npm test`
+When running on development using npm start:
+- npm 6.14.5
+- node 13.11.0
+- react 16.8 (This is important as I am using React Hooks!)
+- material-ui -- both core and icons (see: https://material-ui.com/)
+- react-icons (see: https://react-icons.github.io/react-icons/)
+- honeybadger-io (see: https://www.honeybadger.io/about/)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If needed to run on firebase serve:
+- firebase 7.17.1 (see: https://www.npmjs.com/package/firebase)
 
-### `npm run build`
+## Overview
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+// Main functionalities
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- Search
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Input your postcode or the postcode of the suburb you've been to and click the "Go" button. Covid cases sorted from latest to oldest will appear as a list in the main page.
 
-### `npm run eject`
+- List of cases
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The list of cases will appear from the most recent to the oldest. Case/s that are within 2 weeks will have a red bar and a warning to watch out for symptoms. Case/s that are from week 2 to week 3 will have an orange bar and also a warning to watch out for symtoms. They will also have a link to find testing centers provided by NSW Health. Each case will have the confirmed date of case, the likely source (known community transmission, overseas, etc), and the postcode.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Mobile: On mobile it will just be a warning button which the user needs to click to show the information and link to the testing centers.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+// Other functionalities
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Changing Theme
 
-## Learn More
+Clicking the toggle at the footer will change the theme of the web app to dark mode. Clicking it again will turn it back to light mode. This is for users who much prefer dark mode over light mode.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- About
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Clicking on the About button in the navigation bar will open up a disclaimer and a link to the NSW Health News and Updates website.
 
-### Code Splitting
+## Future Improvements
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Pagination
 
-### Analyzing the Bundle Size
+Limit the cases to about 10 per page and give the user the ability to either browse through older cases or load on scroll.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+- Load page on preferred theme
 
-### Making a Progressive Web App
+Based on cache, the app will check whether the user has set the theme to dark or light mode before. When the user checks the app again, they will be able to see the app on their preferred theme.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Disclaimer
+Data is provided by the NSW Gov: https://data.nsw.gov.au/data/dataset/nsw-covid-19-cases-by-location-and-likely-source-of-infection/resource/2776dbb8-f807-4fb2-b1ed-184a6fc2c8aa. I do not have rights of any sort to claim it as mine.
 
-### Advanced Configuration
+## Discussion
+This is my attempt to explore more about react hooks -- this time including contexts. I dig a bit more about having contexts instead of passing states over and over to components whether or not they need it. This web app also helped me be more comfortable in working on web apps.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+UI wise this is also where I focused on having a web app that is mobile responsive. Had a bit of tweaking into material ui breakpoints to specify at which screen size will a particular component show. Another thing is having a dark and light theme. I know this is now part of the trend in creating apps to ease the strain on a user's eyes. So I did a bit of experimentation on that in this app as well.
 
-### Deployment
+Unlike the e-notebook, I only included Firebase Cloud functions and Hosting in this application. Since this app should be available to everyone, I omitted the authentication. Also no need to storing the data since on worst case scenario (which I hope will NOT happen!), we can have thousands of cases on each suburb. Anyway, Cloud function helps with the web app accessing the data from NSW health.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+And lastly, this is also a way to test myself in working with APIs -- handling errors, loading data, etc.
 
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## License
+MIT License
