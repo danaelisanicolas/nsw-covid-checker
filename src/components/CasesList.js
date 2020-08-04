@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import CasesContextProvider, { CasesContext } from '../contexts/CasesContext'
+import { CasesContext } from '../contexts/CasesContext'
 import { ThemeContext } from '../contexts/ThemeContext'
 
 import Searchbar from './Searchbar'
@@ -12,12 +12,14 @@ import { GridList, Container } from '@material-ui/core'
 
 const CasesList = () => {
   const { isLightTheme, themes } = useContext(ThemeContext)
+  const { cases } = useContext(CasesContext)
 
   const useStyles = makeStyles((theme) => ({
     main: {
-      height: '90vh',
+      height: 'auto',
+      minHeight: '90vh',
       [theme.breakpoints.down('xs')]: {
-        height: '100vh',
+        minHeight: '100vh',
       },
       padding: '0px',
       backgroundColor: isLightTheme ? themes.light.background : themes.dark.background,
@@ -42,29 +44,26 @@ const CasesList = () => {
   }))
 
   const styles = useStyles()
-  const { cases } = useContext(CasesContext)
 
   return (
     <div className={styles.main}>
       {cases.length ? (
         <Container>
           <Container className={styles.notEmpty}>
-            <CasesContextProvider>
-              <Searchbar />
-            </CasesContextProvider>
+            <Searchbar />
           </Container>
           <GridList className={styles.list} cols={1}>
             { cases.map(caseItem => {
-              return (<CaseItem caseItem={caseItem} key={Date.parse(caseItem['notification-date'])} />)
+              return (
+                <CaseItem caseItem={caseItem} key={Date.parse(caseItem['notification-date'])} />
+              )
             })}
           </GridList>
         </Container>
       )
       : (
         <Container className={styles.empty}>
-          <CasesContextProvider>
-            <Searchbar />
-          </CasesContextProvider>
+          <Searchbar />
         </Container>
       )}
     </div>

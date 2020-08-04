@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { Switch, Typography, Container, FormGroup, FormControlLabel, Divider, IconButton, Box } from '@material-ui/core'
+import { Switch, Typography, Container, FormGroup, FormControlLabel, Divider, IconButton, AppBar } from '@material-ui/core'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 
 import { RiGithubLine, RiLinkedinLine } from 'react-icons/ri'
@@ -45,7 +45,8 @@ const FooterContainer = () => {
       padding: '0 0 24px 0',
       height: '10%',
       bottom: '0',
-      position: 'sticky',
+      top: 'auto',
+      position: 'fixed',
     },
     footerContent: {
       paddingTop: '24px',
@@ -70,7 +71,7 @@ const FooterContainer = () => {
   }
 
   return (
-    <div className={styles.footer}>
+    <AppBar className={styles.footer} >
       <Divider className={styles.divider} />
       <Container className={styles.footerContent}>
         <FormGroup>
@@ -89,7 +90,7 @@ const FooterContainer = () => {
           </IconButton>
         </Container>
       </Container>
-    </div>
+    </AppBar>
   );
 }
 

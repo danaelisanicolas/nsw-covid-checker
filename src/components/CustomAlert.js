@@ -125,7 +125,7 @@ const CustomAlert = () => {
         </Container>
       </Container>
       <Container className={styles.smallDisplay}>
-        <IconButton className={styles.icon} onClick={showAlertDialog} disabled={window.innerWidth > 960}><Warning /></IconButton>
+        <IconButton className={styles.icon} onClick={showAlertDialog} ><Warning /></IconButton>
       </Container>
     </Container>
   );

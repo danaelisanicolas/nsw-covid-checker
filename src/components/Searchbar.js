@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
-import { Input, Button, FormControl, InputAdornment } from '@material-ui/core';
+import { Input, Button, FormControl, FormHelperText, InputAdornment } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles'
 
 import Search from '@material-ui/icons/Search'
@@ -10,11 +10,13 @@ import { ThemeContext } from '../contexts/ThemeContext';
 
 const Searchbar = () => {
   const { isLightTheme, themes } = useContext(ThemeContext)
+  const [ errorText, setErrorText ] = useState(null)
 
   const useStyles = makeStyles((theme) => ({
     form: {
       display: 'block',
       textAlign: 'center',
+      textAlignLast: 'center',
     },
     button: {
       width: '100px',
@@ -43,17 +45,34 @@ const Searchbar = () => {
 
   const search = (e) => {
     e.preventDefault()
+    if (!errorText) {
+      const searchInput = document.querySelector('#search-input')
+      searchLocation(searchInput.value)
+    }
+  }
 
-    const searchInput = document.querySelector('#search-input')
-    searchLocation(searchInput.value)
+  const validate = (e) => {
+    const postcode = e.target.value
+    if (postcode.length > 4) {
+      setErrorText('Invalid NSW Postcode')
+    } else if ((parseInt(postcode) < 2000) && postcode.length >= 4) {
+      setErrorText('Invalid NSW Postcode')
+    } else if ((parseInt(postcode) >= 2600) && (parseInt(postcode) < 2640)) {
+
+    } else if (parseInt(postcode) >= 2900) {
+      setErrorText('Invalid NSW Postcode')
+    } else {
+      setErrorText(null)
+    }
   }
 
   return (
-    <FormControl className={styles.form} onSubmit={search}>
-      <Input type='search' id='search-input' inputProps={{style: {textAlign:'center'}}} className={styles.input} variant='filled' placeholder='Postcode'
+    <FormControl className={styles.form} onSubmit={search} error={errorText}>
+      {errorText ? (<FormHelperText>{errorText}</FormHelperText>) : null}
+      <Input onChange={validate} onBlur={validate} type='search' id='search-input' inputProps={{style: {textAlign:'center'}}} className={styles.input} variant='filled' placeholder='Postcode'
       startAdornment={
         <InputAdornment position='start'><Search /></InputAdornment>
-      }/>
+      } />
       <Button type='submit' variant='contained' size='medium' className={styles.button} onClick={search}>Go</Button>
     </FormControl>
   );

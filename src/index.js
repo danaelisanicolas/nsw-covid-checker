@@ -9,7 +9,7 @@ import ErrorBoundary from '@honeybadger-io/react'
 
 Honeybadger.configure({
   apiKey: '0eac373d',
-  environment: 'production'
+  environment: 'debug',
 })
 
 ReactDOM.render(

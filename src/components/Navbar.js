@@ -62,7 +62,6 @@ const Navbar = () => {
   const styles = useStyles()
 
   const aboutHandler = (e) => {
-    console.log('test ')
     setOpen(true)
   }
 
@@ -83,7 +82,7 @@ const Navbar = () => {
   return (
     <AppBar position='static' className={styles.navbar}>
       {<Dialog open={open} onClose={closeHandler}>{aboutBody}</Dialog>}
-      <Toolbar variant='dense' className={styles.toolbar} boxShadow={0}>
+      <Toolbar variant='dense' className={styles.toolbar} >
         <Typography variant='h6' className={styles.brand}>NSW Covid Cases Checker</Typography>
         <Box className={styles.menu}>
           <Button color='inherit' onClick={aboutHandler}>About</Button>

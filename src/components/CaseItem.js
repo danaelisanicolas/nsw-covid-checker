@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 
-import { Typography, Container, GridListTile, Dialog, Icon } from '@material-ui/core'
-import { Warning } from '@material-ui/icons'
+import { Typography, Container, GridListTile } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
 import CustomDivider from './CustomDivider'
@@ -40,7 +39,7 @@ const CaseItem = ( { caseItem } ) => {
     content: {
       color: isLightTheme ? themes.light.secondary : themes.dark.primary,
       alignSelf: 'center',
-      [theme.breakpoints.up('lg')]: {
+      [theme.breakpoints.up('md')]: {
         minWidth: '48%'
       }
     },
