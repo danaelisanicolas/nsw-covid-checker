@@ -105,7 +105,7 @@ const CustomAlert = () => {
       <Typography className={styles.info} variant='body2'>• Watch for COVID-19 symptoms</Typography>
       <Typography className={styles.info} variant='body2'>• If symptoms occur, immediately get tested and self-isolate.</Typography>
       <Box className={styles.dialogAction}>
-        <Button className={styles.alertActionButton} variant='outlined' disableElevation size='small' onClick={openTestingCenters}>See Testing Centers</Button>
+        <Button className={styles.alertActionButton} variant='outlined' disableElevation size='small' onClick={openTestingCenters}>Find A Testing Center</Button>
       </Box>
     </Container>
   )
