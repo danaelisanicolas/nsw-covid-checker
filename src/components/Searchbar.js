@@ -28,6 +28,12 @@ const Searchbar = () => {
       color: isLightTheme ? themes.light.background : themes.dark.primary,
     },
     input: {
+      '&::before': {
+        borderBottom: `1px solid ${isLightTheme ? themes.light.secondary : themes.dark.primary}`,
+      },
+      '&::after': {
+        borderBottom: `1px solid ${isLightTheme ? themes.light.primary : themes.dark.secondary}`,
+      },
       height: '54px',
       width: '35%',
       [theme.breakpoints.down('sm')]: {
@@ -35,7 +41,6 @@ const Searchbar = () => {
       },
       margin: '0 8px',
       color: isLightTheme ? themes.light.secondary : themes.dark.primary,
-      border: isLightTheme ? themes.light.secondary : themes.dark.secondary,
       fontSize: '0.9em',
     }
   }))
