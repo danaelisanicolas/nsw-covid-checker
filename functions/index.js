@@ -16,10 +16,10 @@ exports.fetchData = functions.https.onRequest((request, response) => {
 
     axios.get(url)
       .then(res => {
-        response.status(200).json(res.data)
+        return response.status(200).json(res.data)
       })
       .catch(err => {
-        response.status(500).json({error: err})
+        return response.status(500).json({error: err})
       })
   })
 });

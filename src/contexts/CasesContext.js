@@ -8,15 +8,15 @@ axios.defaults.headers = {
 }
 
 const domain = {
-  'development': 'http://localhost:5001/nsw-covid-checker/',
-  'production': 'https://nsw-covid-checker.web.app/',
+  'development': 'http://localhost:5001/nsw-covid-checker/us-central1/',
+  'production': 'https://us-central1-nsw-covid-checker.cloudfunctions.net/',
 }
 
 const CasesContextProvider = (props) => {
   const [ cases, setCases ] = useState([])
 
   const searchLocation = (location) => {
-    const url = `${domain[process.env.NODE_ENV]}us-central1/fetchData`
+    const url = `${domain[process.env.NODE_ENV]}fetchData`
     let params = {}
     if (location) {
       params = { postcode : location }
