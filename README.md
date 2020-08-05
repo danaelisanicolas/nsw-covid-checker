@@ -4,7 +4,7 @@ NSW Covid Cases Checker is a helper web app meant to assist communities and resi
 
 ## Environments
 
-This is a React Web App which can be accessed on any browser by following this link: [TPD].
+This is a React Web App which can be accessed on any browser by following this link: https://nsw-covid-checker.web.app/.
 
 Compatible/Tested environments:
 - Chrome Version 84.x
@@ -54,25 +54,29 @@ Clicking on the About button in the navigation bar will open up a disclaimer and
 
 Limit the cases to about 10 per page and give the user the ability to either browse through older cases or load on scroll.
 
-- Load page on preferred theme
+~~- Load page on preferred theme~~
 
-Based on cache, the app will check whether the user has set the theme to dark or light mode before. When the user checks the app again, they will be able to see the app on their preferred theme.
+~~Based on cache, the app will check whether the user has set the theme to dark or light mode before. When the user checks the app again, they will be able to see the app on their preferred theme.~~
 
 - Autocomplete with Suburb name
 
 Improvement on user experience that shows autocomplete (including the suburb name) while user is typing.
 
+- Stats
+
+A graph or visualisation to see the trend of cases.
+
 ## Disclaimer
-Data is provided by the NSW Gov: https://data.nsw.gov.au/data/dataset/nsw-covid-19-cases-by-location-and-likely-source-of-infection/resource/2776dbb8-f807-4fb2-b1ed-184a6fc2c8aa. I do not have rights of any sort to claim it as mine.
+Data is provided by the [NSW Gov](https://data.nsw.gov.au/data/dataset/nsw-covid-19-cases-by-location-and-likely-source-of-infection/resource/2776dbb8-f807-4fb2-b1ed-184a6fc2c8aa). I do not have rights of any sort to claim it as mine.
 
 ## Discussion
-This is my attempt to explore more about react hooks -- this time including contexts. I dig a bit more about having contexts instead of passing states over and over to components whether or not they need it. This web app also helped me be more comfortable in working on web apps.
+This is my attempt to explore more about react hooks -- this time including contexts, effects, and reducers. I dig a bit more about having contexts instead of passing states over and over to components whether or not they need it. This web app also helped me be more comfortable in working on web apps.
 
 UI wise this is also where I focused on having a web app that is mobile responsive. Had a bit of tweaking into material ui breakpoints to specify at which screen size will a particular component show. Another thing is having a dark and light theme. I know this is now part of the trend in creating apps to ease the strain on a user's eyes. So I did a bit of experimentation on that in this app as well.
 
-Unlike the e-notebook, I only included Firebase Cloud functions and Hosting in this application. Since this app should be available to everyone, I omitted the authentication. Also no need to storing the data since on worst case scenario (which I hope will NOT happen!), we can have thousands of cases on each suburb. Anyway, Cloud function helps with the web app accessing the data from NSW health.
+Unlike the e-notebook, I only included Firebase Cloud functions and Hosting in this application. Since this app should be available to everyone, I omitted authentication function. Also no need to storing the data since on worst case scenario (which I hope will NOT happen!), we can have thousands of cases on each suburb. Anyway, Cloud function helps with the web app accessing the data from NSW health.
 
-And lastly, this is also a way to test myself in working with APIs -- handling errors, loading data, etc.
+And lastly, this is also a way to test myself in working with APIs -- handling errors, loading data, etc. Both from NSW Health and from my own on Cloud Functions.
 
 ## License
 MIT License
