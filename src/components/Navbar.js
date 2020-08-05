@@ -49,11 +49,12 @@ const Navbar = () => {
     },
     disclaimer: {
       padding: '20px',
-      backgroundColor: isLightTheme ? themes.light.background : themes.dark.background,
+      backgroundColor: isLightTheme ? themes.light.background : themes.dark.other,
       color: isLightTheme ? themes.light.secondary : themes.dark.primary,
     },
     popup: {
       padding: '20px',
+      backgroundColor: isLightTheme ? themes.light.background : themes.dark.other,
       color: isLightTheme ? themes.light.secondary : themes.dark.primary,
     },
     popupTitle: {
