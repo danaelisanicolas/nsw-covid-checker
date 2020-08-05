@@ -1,9 +1,20 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useState, useEffect, useReducer } from 'react'
 
 export const ThemeContext = createContext()
 
+export const ThemeReducer = (state, action) => {
+  switch (action.type) {
+    case 'CHANGE_THEME':
+      return action.lightTheme
+    default:
+      return state
+  }
+}
+
 const ThemeContextProvider = (props) => {
-  const [ isLightTheme, setIsLightTheme ] = useState(true)
+  const [ isLightTheme, dispatch ] = useReducer(ThemeReducer, true, () => {
+    return localStorage.getItem('theme')
+  })
 
   const [ themes ] = useState({
     light: {
@@ -25,12 +36,12 @@ const ThemeContextProvider = (props) => {
     }
   })
 
-  const toggleTheme = () => {
-    setIsLightTheme(!isLightTheme)
-  }
+  useEffect(() => {
+    localStorage.setItem('theme', isLightTheme)
+  }, [isLightTheme])
 
   return (
-    <ThemeContext.Provider value={{isLightTheme, themes, toggleTheme}}>
+    <ThemeContext.Provider value={{isLightTheme, themes, dispatch}}>
       {props.children}
     </ThemeContext.Provider>
   );

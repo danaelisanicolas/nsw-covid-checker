@@ -9,6 +9,7 @@ axios.defaults.headers = {
 
 const CasesContextProvider = (props) => {
   const [ cases, setCases ] = useState([])
+  const [ error, setError ] = useState(null)
 
   const searchLocation = (location) => {
     const url = `${process.env.REACT_APP_API_HOST}/fetchData`
@@ -21,12 +22,12 @@ const CasesContextProvider = (props) => {
       const records = res.data.result['records']
       setCases(records)
     }).catch(err => {
-      console.log(err)
+      setError(err)
     })
   }
 
   return (
-    <CasesContext.Provider value={{cases, searchLocation}}>
+    <CasesContext.Provider value={{cases, searchLocation, error}}>
       {props.children}
     </CasesContext.Provider>
   );

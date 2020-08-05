@@ -58,6 +58,10 @@ Limit the cases to about 10 per page and give the user the ability to either bro
 
 Based on cache, the app will check whether the user has set the theme to dark or light mode before. When the user checks the app again, they will be able to see the app on their preferred theme.
 
+- Autocomplete with Suburb name
+
+Improvement on user experience that shows autocomplete (including the suburb name) while user is typing.
+
 ## Disclaimer
 Data is provided by the NSW Gov: https://data.nsw.gov.au/data/dataset/nsw-covid-19-cases-by-location-and-likely-source-of-infection/resource/2776dbb8-f807-4fb2-b1ed-184a6fc2c8aa. I do not have rights of any sort to claim it as mine.
 

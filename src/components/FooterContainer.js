@@ -7,7 +7,7 @@ import { RiGithubLine, RiLinkedinLine } from 'react-icons/ri'
 import { ThemeContext } from '../contexts/ThemeContext'
 
 const FooterContainer = () => {
-  const { isLightTheme, themes, toggleTheme } = useContext(ThemeContext)
+  const { isLightTheme, themes, dispatch } = useContext(ThemeContext)
 
   const CustomSwitch = withStyles({
     switchBase: {
@@ -29,6 +29,7 @@ const FooterContainer = () => {
       textAlign: 'right',
       display: 'block',
       color: isLightTheme ? themes.light.primary : themes.dark.primary,
+      paddingTop: '4px',
     },
     name: {
       padding: '4px',
@@ -43,13 +44,12 @@ const FooterContainer = () => {
       display: 'block',
       margin: '0px',
       padding: '0 0 24px 0',
-      height: '10%',
+      height: '64px',
       bottom: '0',
       top: 'auto',
       position: 'fixed',
     },
     footerContent: {
-      paddingTop: '24px',
       display: 'flex',
     },
     divider: {
@@ -57,6 +57,9 @@ const FooterContainer = () => {
     },
     switch: {
       color: isLightTheme ? themes.light.secondary : themes.dark.primary,
+    },
+    form: {
+      justifyContent: 'center'
     }
   }))
 
@@ -70,11 +73,18 @@ const FooterContainer = () => {
     window.open('https://www.linkedin.com/in/danaelisanicolas/')
   }
 
+  const toggleTheme = (e) => {
+    dispatch(
+      {type: 'CHANGE_THEME',
+      lightTheme: !isLightTheme}
+    )
+  }
+
   return (
     <AppBar className={styles.footer} >
       <Divider className={styles.divider} />
       <Container className={styles.footerContent}>
-        <FormGroup>
+        <FormGroup className={styles.form}>
           <FormControlLabel className={styles.switch} control={
             <CustomSwitch onChange={toggleTheme} checked={!isLightTheme} />
           } label={<Typography variant='body2'>Dark Theme</Typography>}>

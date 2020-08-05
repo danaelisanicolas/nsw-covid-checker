@@ -7,12 +7,12 @@ import Searchbar from './Searchbar'
 import CaseItem from './CaseItem'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { GridList, Container } from '@material-ui/core'
+import { GridList, Container, Typography } from '@material-ui/core'
 
 
 const CasesList = () => {
   const { isLightTheme, themes } = useContext(ThemeContext)
-  const { cases } = useContext(CasesContext)
+  const { cases, error } = useContext(CasesContext)
 
   const useStyles = makeStyles((theme) => ({
     main: {
@@ -40,6 +40,11 @@ const CasesList = () => {
     },
     list: {
       justifyContent: 'center',
+    },
+    errorText: {
+      color: themes.status.alertColor,
+      textAlign: 'center',
+      display: 'block',
     }
   }))
 
@@ -63,6 +68,7 @@ const CasesList = () => {
       )
       : (
         <Container className={styles.empty}>
+          {error ? <Typography className={styles.errorText} variant='caption'>Error: Oops that's on our side. Please try again later.</Typography> : null}
           <Searchbar />
         </Container>
       )}
