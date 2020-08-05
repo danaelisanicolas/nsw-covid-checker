@@ -7,12 +7,16 @@ axios.defaults.headers = {
   'Content-Type': 'application/xml',
 }
 
+const domain = {
+  'development': 'http://localhost:5001/nsw-covid-checker/',
+  'production': 'https://nsw-covid-checker.web.app/',
+}
+
 const CasesContextProvider = (props) => {
   const [ cases, setCases ] = useState([])
 
   const searchLocation = (location) => {
-
-    const url = 'http://localhost:5001/nsw-covid-checker/us-central1/fetchData'
+    const url = `${domain[process.env.NODE_ENV]}us-central1/fetchData`
     let params = {}
     if (location) {
       params = { postcode : location }
