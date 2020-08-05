@@ -26,7 +26,7 @@ If needed to run on firebase serve:
 
 ## Overview
 
-// Main functionalities
+**Main functionalities**
 
 - Search
 
@@ -38,7 +38,7 @@ The list of cases will appear from the most recent to the oldest. Case/s that ar
 
 Mobile: On mobile it will just be a warning button which the user needs to click to show the information and link to the testing centers.
 
-// Other functionalities
+**Other functionalities**
 
 - Changing Theme
 
