@@ -11,9 +11,14 @@ const CasesContextProvider = (props) => {
   const [ cases, setCases ] = useState([])
 
   const searchLocation = (location) => {
-    const url = 'https://cors-anywhere.herokuapp.com/https://data.nsw.gov.au/data/api/3/action/datastore_search?sort=notification_date desc&resource_id=2776dbb8-f807-4fb2-b1ed-184a6fc2c8aa'
 
-    axios.get(location ? url + '&q=' + location : url).then(res => {
+    const url = 'http://localhost:5001/nsw-covid-checker/us-central1/fetchData'
+    let params = {}
+    if (location) {
+      params = { postcode : location }
+    }
+
+    axios.get(url, {params: params}).then(res => {
       const records = res.data.result['records']
       setCases(records)
     }).catch(err => {
